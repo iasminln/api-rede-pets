@@ -30,6 +30,7 @@ function api_user_post($request)
     'role' => 'subscriber',
   ]);
 
+  
 
   return rest_ensure_response($response);
 };

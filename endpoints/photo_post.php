@@ -11,9 +11,9 @@ function api_photo_post($request)
   }
 
   $nome = sanitize_text_field($request['nome']);
-  $peso = sanitize_text_field($request['peso']);
+  $especie = sanitize_text_field($request['especie']);
   $idade = sanitize_text_field($request['idade']);
-  // $descricao = sanitize_text_field($request['descricao']);
+  $descricao = sanitize_text_field($request['descricao']);
   $files = $request->get_file_params();
 
   if (empty($nome) || empty($files)) {
@@ -26,10 +26,10 @@ function api_photo_post($request)
     'post_type' => 'post',
     'post_status' => 'publish',
     'post_title' => $nome,
-    // 'post_content' => $descricao,
+    'post_content' => $descricao,
     'files' => $files,
     'meta_input' => [
-      'peso' => $peso,
+      'especie' => $especie,
       'idade' => $idade,
       'acessos' => 0,
     ],

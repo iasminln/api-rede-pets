@@ -16,7 +16,7 @@ function api_comment_get($request)
 
 function register_api_comment_get()
 {
-  register_rest_route('v1', '/comment/(?P<id>[0-9)+)', [
+  register_rest_route('v1', '/comment/(?P<id>[0-9]+)', [
     'methods' => WP_REST_Server::READABLE,
     'callback' => 'api_comment_get',
   ]);

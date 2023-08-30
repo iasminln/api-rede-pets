@@ -17,6 +17,7 @@ require_once $dirbase . '/endpoints/photo_get.php';
 
 require_once $dirbase . '/endpoints/comment_post.php';
 require_once $dirbase . '/endpoints/comment_get.php';
+require_once $dirbase . '/endpoints/comment_delete.php';
 
 require_once $dirbase . '/endpoints/password.php';
 
@@ -26,6 +27,7 @@ require_once $dirbase . '/endpoints/stats_get.php';
 update_option('large-size_w', 1000);
 update_option('large-size_h', 1000);
 update_option('large-crop', 1);
+
 
 function expire_token()
 {

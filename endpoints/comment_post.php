@@ -16,8 +16,9 @@ function api_comment_post($request)
   $post_id = $request['id'];
 
 
+
   if (empty($comment)) {
-    $response = new WP_Error('error', 'Dados incompletos.', ['status' => 401]);
+    $response = new WP_Error('error', 'Dados incompletos.', ['status' => 422]);
     return rest_ensure_response($response);
   }
 
@@ -36,9 +37,10 @@ function api_comment_post($request)
 }
 
 
+
 function register_api_comment_post()
 {
-  register_rest_route('v1', '/comment/(?P<id>[0-9)+)', [
+  register_rest_route('v1', '/comment/(?P<id>[0-9]+)', [
     'methods' => WP_REST_Server::CREATABLE,
     'callback' => 'api_comment_post',
   ]);

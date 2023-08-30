@@ -11,9 +11,10 @@ function photo_data($post)
     'id' => $post->ID,
     'author' => $user->user_login,
     'title' => $post->post_title,
+    'content' => $post->post_content,
     'date' => $post->post_date,
     'src' => $src,
-    'peso' => $post_meta['peso'][0],
+    'especie' => $post_meta['especie'][0],
     'idade' => $post_meta['idade'][0],
     'acessos' => $post_meta['acessos'][0],
     'total_comments' => $total_comments,
@@ -37,7 +38,7 @@ function api_photo_get($request)
 
   $comments = get_comments([
     'post_id' => $post_id,
-    'order' => 'ASC',
+    // 'order' => 'ASC',
   ]);
 
   $response = [
@@ -51,7 +52,7 @@ function api_photo_get($request)
 
 function register_api_photo_get()
 {
-  register_rest_route('v1', '/photo/(?P<id>[0-9)+)', [
+  register_rest_route('v1', '/photo/(?P<id>[0-9]+)', [
     'methods' => WP_REST_Server::READABLE,
     'callback' => 'api_photo_get',
   ]);
@@ -78,7 +79,7 @@ function api_photos_get($request)
     if (!$user) {
       $response = new WP_Error('error', 'Usuário não encontrado.', ['status' => 404]);
       return rest_ensure_response($response);
-    }
+    };
     $_user = $user->ID;
   }
   ;
@@ -111,7 +112,7 @@ function register_api_photos_get()
 {
   register_rest_route('v1', '/photo', [
     'methods' => WP_REST_Server::READABLE,
-    'callback' => 'api_photo_get',
+    'callback' => 'api_photos_get',
   ]);
 }
 ;

@@ -43,7 +43,7 @@ function api_password_lost($request)
 
 function register_api_password_lost()
 {
-  register_rest_route('v1', '/password', [
+  register_rest_route('v1', '/password/lost', [
     'methods' => WP_REST_Server::CREATABLE,
     'callback' => 'api_password_lost',
   ]);
